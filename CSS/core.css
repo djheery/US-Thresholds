@@ -118,3 +118,15 @@ a {
     font-size: 1.15rem;
   }
  }
+
+ @media only screen and (min-width: 1500px) {
+   h2 {
+     font-size: 2rem
+   };
+   p {
+     font-size: 1.3rem;
+   }
+   .bacc__inner-container__section {
+    max-width: 1500px;
+  }
+ }

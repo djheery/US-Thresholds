@@ -5,8 +5,10 @@
  @media only screen and (min-width: 1044px) {
 
   .bacc__link-widget {
+    line-height: 1.5;
     display: block;
     position: fixed;
+    background: #fff;
     top: 40px;
     right: 20px;
     border: 1px solid #ccc;
@@ -42,6 +44,10 @@
     display: none;
   }
 
+  .post-item__text:hover {
+    opacity: .7;
+  }
+
   .link-widget__heading {
     font-size: .8rem;
   }
@@ -49,13 +55,19 @@
 
  @media only screen and (min-width: 1200px) {
   .bacc__link-widget {
-    right: 100px;
+    right: 3%;
     font-size: unset;
+    padding: 15px 20px 10px 20px;
   }
 
   .link-widget__heading {
     font-size: unset;
   }
+
+  .link-widget__heading:before {
+    left: -20px;
+  }
+
 
   .post-item {
     max-width: 380px;
@@ -69,4 +81,15 @@
     display: block;
     border: 1px solid #333
   }
+ }
+
+ @media only screen and (min-width: 1550px) {
+  .bacc__link-widget {
+    right: 3%;
+    font-size: unset;
+    max-width: unset;
+    width: 380px;
+    padding: 15px 20px 10px 20px;
+  }
+
  }

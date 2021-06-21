@@ -6,6 +6,7 @@
 }
 
 table {
+  line-height: 1.4rem;
   max-width: 800px;
   transform-origin: top left;
   transform: scale(1);
@@ -59,6 +60,15 @@ th, td {
   table {
     font-size: .95rem;
     max-width: 800px;
+  }
+  th, td {
+    padding: 12px 15px;
+  }
+}
+@media only screen and (min-width: 1500px) {
+  table {
+    font-size: 1.2rem;
+    max-width: 1100px;
   }
   th, td {
     padding: 12px 15px;
