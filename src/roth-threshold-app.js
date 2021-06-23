@@ -6,6 +6,8 @@ const ThresholdsApp = (() => {
   return {
     init: () => {
       loadEventListeners()
+      ThresholdUI.RothThresholds('21-22')
+      ThresholdUI.TraditionalThresholds('21-22')
     }
   }
 })(ThresholdUI)

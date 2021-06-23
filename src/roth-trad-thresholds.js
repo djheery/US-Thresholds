@@ -72,7 +72,7 @@ const RothTradThresholds = (() => {
         threshOne: 66000,
         threshTwo: 76000,
       },
-      marrigeJointOne: {
+      marriageJointOne: {
         threshOne: 105000,
         threshTwo: 125000
       },
@@ -161,7 +161,7 @@ const RothTradThresholds = (() => {
         threshOne: 65000,
         threshTwo: 75000,
       },
-      marrigeJointOne: {
+      marriageJointOne: {
         threshOne: 104000,
         threshTwo: 124000
       },
@@ -179,8 +179,8 @@ const RothTradThresholds = (() => {
   }
   return {
     getThresholds: (option) => {
-      if(option = '21-22') return twentyOneTwo
-      if(option = '20-21') return twentyTwentyOne
+      if(option === '21-22') return twentyOneTwo
+      if(option === '20-21') return twentyTwentyOne
     }
   }
 })()
