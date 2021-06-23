@@ -13,6 +13,10 @@
   border: none;
 }
 
+#taxYear:hover {
+  cursor: pointer;
+}
+
 #bacc__select-container {
   border: #000 1px solid;
   height: 37px;

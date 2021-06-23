@@ -79,7 +79,25 @@
     width: 100px;
     height: 100px;
     display: block;
-    border: 1px solid #333
+    border: solid 1px #ccc;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .post-img {
+    transition: all .5s ease-in-out;
+  }
+
+  .post-item__image:hover .post-img {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+  .link-widget__img-link:hover + .post-item__text {
+    opacity: 0.6;
+    cursor: pointer;
   }
  }
 
