@@ -1,9 +1,11 @@
 const ThresholdUI = (() => {
   const selectors = {
+    pageContainer: document.querySelector('.bacc__page-container'),
     selectContainers: Array.from(document.querySelectorAll('#bacc__select-container')),
     rothTable: document.querySelector('.roth-thresholds'),
     tradTable: document.querySelector('.trad-thresholds'),
-    tradMarriageSeperateTable: document.querySelector('.trad-marriage-seperate')
+    tradMarriageSeperateTable: document.querySelector('.trad-marriage-seperate'),
+    linkWidget: document.querySelector('.bacc__link-widget')
   }
 
   return {

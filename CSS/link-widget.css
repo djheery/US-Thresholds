@@ -7,7 +7,7 @@
   .bacc__link-widget {
     line-height: 1.5;
     display: block;
-    position: fixed;
+    position: absolute;
     background: #fff;
     top: 40px;
     right: 20px;
