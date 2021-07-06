@@ -16,12 +16,8 @@ const ThresholdUI = (() => {
       if(e.target.classList.contains('trad')) ThresholdUI.TraditionalThresholds(e.target.options[e.target.selectedIndex].value)
     },
     RothThresholds: (option) => {
-      if(option === '21-22') {
-        thresh = RothTradThresholds.getThresholds('21-22')
-      }
-      if(option === '20-21') {
-        thresh = RothTradThresholds.getThresholds('20-21')
-      }
+      if(option === '21-22') thresh = RothTradThresholds.getThresholds('21-22')
+      if(option === '20-21') thresh = RothTradThresholds.getThresholds('20-21')
         selectors.rothTable.innerHTML = `
         <table>
         <thead>
@@ -117,12 +113,8 @@ const ThresholdUI = (() => {
       },
     TraditionalThresholds: (option) => {
       let thresh;
-      if(option === '21-22') {
-        thresh = RothTradThresholds.getThresholds('21-22')
-      }
-      if(option === '20-21') {
-        thresh = RothTradThresholds.getThresholds('20-21')
-      }
+      if(option === '21-22') thresh = RothTradThresholds.getThresholds('21-22');      
+      if(option === '20-21') thresh = RothTradThresholds.getThresholds('20-21');
         selectors.tradTable.innerHTML = `
         <table>
         <thead>
@@ -162,7 +154,6 @@ const ThresholdUI = (() => {
     },
     numberWithCommas: (x) => {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }, 
-    linkWidgetPosition()
+    }
   }
 })()
