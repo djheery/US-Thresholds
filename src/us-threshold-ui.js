@@ -4,6 +4,7 @@ const ThresholdUI = (() => {
     selectContainers: Array.from(document.querySelectorAll('#bacc__select-container')),
     rothTable: document.querySelector('.roth-thresholds'),
     tradTable: document.querySelector('.trad-thresholds'),
+    incomeTable: document.querySelector('.income-tax-thresholds'),
     tradMarriageSeperateTable: document.querySelector('.trad-marriage-seperate'),
     linkWidget: document.querySelector('.bacc__link-widget')
   }
@@ -14,6 +15,7 @@ const ThresholdUI = (() => {
       if(!e.target.classList.contains('select-box')) return
       if(e.target.classList.contains('roth')) ThresholdUI.RothThresholds(e.target.options[e.target.selectedIndex].value)
       if(e.target.classList.contains('trad')) ThresholdUI.TraditionalThresholds(e.target.options[e.target.selectedIndex].value)
+      if(e.target.classList.contains('income-tax')) ThresholdUI.IncomeTaxThresholds(e.target.options[e.target.selectedIndex].value)
     },
     RothThresholds: (option) => {
       if(option === '21-22') thresh = RothTradThresholds.getThresholds('21-22')
@@ -148,6 +150,77 @@ const ThresholdUI = (() => {
             <td>No Deduction</td>
             <td>No deduction</td>
           </tr>
+        </tbody>
+      </table>
+        `
+    },
+    IncomeTaxThresholds: (option) => {
+      let thresh;
+      if(option === '21-22') thresh = RothTradThresholds.getThresholds('21-22');      
+      if(option === '20-21') thresh = RothTradThresholds.getThresholds('20-21');
+      if(option === '19-20') thresh = RothTradThresholds.getThresholds('19-20');
+      if(option === '18-19') thresh = RothTradThresholds.getThresholds('18-19');
+        selectors.incomeTable.innerHTML = `
+        <table>
+        <thead>
+          <tr class="heading-container">
+            <th class="table-heading">Tax Rate</th>
+            <th class="table-heading">Single Filers</th>
+            <th class="table-heading">Head of Household</th>
+            <th class="table-heading">Married Filing Jointly</th>
+            <th class="table-heading">Married Filing Seperatley</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-data-row">
+            <td>${thresh.usIncomeTaxThresholds.taxRates.lowRate * 100}%</td>
+            <td>under $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.single.lowThreshold)}</td>
+            <td>under $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.headOfHousehold.lowThreshold)}</td>
+            <td>under $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedJoint.lowThreshold)}</td>                
+            <td>$${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedSeperate.lowThreshold)}</td>
+          </tr>
+          <tr class="table-data-row">
+            <td>${thresh.usIncomeTaxThresholds.taxRates.lowmidRate * 100}%</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.single.lowThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.single.lowMidThreshold)}</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.headOfHousehold.lowThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.headOfHousehold.lowMidThreshold)}</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedJoint.lowThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedJoint.lowMidThreshold)}</td>                
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedSeperate.lowThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedSeperate.lowMidThreshold)}</td>            
+          </tr>      
+          <tr class="table-data-row">
+            <td>${thresh.usIncomeTaxThresholds.taxRates.lowHighRate * 100}%</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.single.lowMidThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.single.lowHighThreshold)}</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.headOfHousehold.lowMidThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.headOfHousehold.lowHighThreshold)}</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedJoint.lowMidThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedJoint.lowHighThreshold)}</td>                
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedSeperate.lowMidThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedSeperate.lowHighThreshold)}</td>            
+          </tr>      
+          <tr class="table-data-row">
+          <td>${thresh.usIncomeTaxThresholds.taxRates.midLowRate * 100}%</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.single.lowHighThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.single.midLowThreshold)}</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.headOfHousehold.lowHighThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.headOfHousehold.midLowThreshold)}</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedJoint.lowHighThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedJoint.midLowThreshold)}</td>                
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedSeperate.lowHighThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedSeperate.midLowThreshold)}</td>            
+          </tr>      
+          <tr class="table-data-row">
+          <td>${thresh.usIncomeTaxThresholds.taxRates.midRate * 100}%</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.single.midLowThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.single.midThreshold)}</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.headOfHousehold.midLowThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.headOfHousehold.midThreshold)}</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedJoint.midLowThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedJoint.midThreshold)}</td>                
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedSeperate.midLowThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedSeperate.midThreshold)}</td>            
+          </tr>      
+          <tr class="table-data-row">
+          <td>${thresh.usIncomeTaxThresholds.taxRates.midHighRate * 100}%</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.single.midThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.single.highThreshold)}</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.headOfHousehold.midThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.headOfHousehold.highThreshold)}</td>
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedJoint.midThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedJoint.highThreshold)}</td>                
+            <td>Between $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedSeperate.midThreshold)} & $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedSeperate.highThreshold)}</td>            
+          </tr>      
+          <tr class="table-data-row">
+          <td>${thresh.usIncomeTaxThresholds.taxRates.highRate * 100}%</td>
+            <td>Above $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.single.highThreshold)}</td>
+            <td>Above $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.headOfHousehold.highThreshold)}</td>
+            <td>Above $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedJoint.highThreshold)}</td>                
+            <td>Above $${ThresholdUI.numberWithCommas(thresh.usIncomeTaxThresholds.marriedSeperate.highThreshold)}</td>            
+          </tr>      
         </tbody>
       </table>
         `
